@@ -43,6 +43,6 @@ var ErrNotEnoughArguments error = fmt.Errorf("Looks like some argument was misse
 // to the command line
 var ErrWrongArgument error = fmt.Errorf("You may have used wrong argument/flag. Please use command `accurics help` to get a better idea")
 
-// ErrSomethingWentWrong -> User defined error to explain it to the user that something may have gon wrong with
+// ErrAPICall -> User defined error to explain it to the user that something may have gon wrong with
 // the server and that they should try again later
-var ErrSomethingWentWrong error = fmt.Errorf("Something went wrong with the server. Please try again, later")
+var ErrAPICall error = fmt.Errorf("Something went wrong with the server. Please try again, later")
