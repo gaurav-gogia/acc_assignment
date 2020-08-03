@@ -2,20 +2,16 @@ package main
 
 import "fmt"
 
-// Constant strings for all queries
+// SUCCESS string constant for response
+const SUCCESS = "success"
+
+// Constant strings for APIs
 const (
-	INITDB = `
-	create table if not exists employees (
-		empid integer primary key autoincrement,
-		name text not null,
-		salary integer not null,
-		age integer not null
-	);
-	`
-	GETALL = "select * from employees;"
-	GETONE = "select * from employees where empid = ?;"
-	DELONE = "delete from employees where empid = ?;"
-	SETONE = "insert into employees (name, salary, age) values(?, ?, ?);"
+	BASEURL   = "http://dummy.restapiexample.com/api/v1/"
+	GETALLURL = BASEURL + "employees"
+	GETONEURL = BASEURL + "employee/"
+	CREATEURL = BASEURL + "create"
+	DELETEURL = BASEURL + "delete/"
 )
 
 // Constant strings for all commands
@@ -40,15 +36,13 @@ const (
 	EMPIDFLAG  = "-empid"
 )
 
-// Constant strings for paths, driver, misc strings
-const (
-	DRIVER = "sqlite3"
-	PATH   = "./dbdir/data.db"
-)
-
 // ErrNotEnoughArguments -> User defined error to explain it to the user tha they have not passed enough arguments // to the command line
 var ErrNotEnoughArguments error = fmt.Errorf("Looks like some argument was missed. Please use command `accurics help` to get a better idea")
 
 // ErrWrongArgument -> User defined error to explain it to the user tha they have not passed correct arguments
 // to the command line
 var ErrWrongArgument error = fmt.Errorf("You may have used wrong argument/flag. Please use command `accurics help` to get a better idea")
+
+// ErrSomethingWentWrong -> User defined error to explain it to the user that something may have gon wrong with
+// the server and that they should try again later
+var ErrSomethingWentWrong error = fmt.Errorf("Something went wrong with the server. Please try again, later")
