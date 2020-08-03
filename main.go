@@ -6,30 +6,37 @@ import (
 )
 
 func main() {
-	// Get DB Connection. Create employee table if it doesn't exist
-	db, err := initdb()
-	handle(err)
-	defer db.Close()
-
 	if len(os.Args) < 2 {
 		helpCmd()
-		os.Exit(0)
+		return
 	}
 
 	switch os.Args[1] {
 	case HELP1, HELP2, HELP3, HELP4:
 		helpCmd()
 	case LISTCMD:
-		err := listCmd(db)
+		err := listCmd()
 		handle(err)
 	case CREATECMD:
-		err := createCmd(db, os.Args[2], os.Args[3], os.Args[4], os.Args[5], os.Args[6], os.Args[7])
+		if len(os.Args) < 8 {
+			helpCmd()
+			return
+		}
+		err := createCmd(os.Args[2], os.Args[3], os.Args[4], os.Args[5], os.Args[6], os.Args[7])
 		handle(err)
 	case DELETECMD:
-		err := delCmd(db, os.Args[2], os.Args[3])
+		if len(os.Args) < 4 {
+			helpCmd()
+			return
+		}
+		err := delCmd(os.Args[2], os.Args[3])
 		handle(err)
 	case SHOWCMD:
-		err := showCmd(db, os.Args[2], os.Args[3])
+		if len(os.Args) < 4 {
+			helpCmd()
+			return
+		}
+		err := showCmd(os.Args[2], os.Args[3])
 		handle(err)
 	default:
 		helpCmd()
