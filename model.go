@@ -12,9 +12,10 @@ type OneEmployee struct {
 	Data   oneEmpData `json:"data"`
 }
 
-// DeleteEmployee structure will be used to deserealize json string response from /delete/{} API into golang structure
-type DeleteEmployee struct {
+// ModifyEmployee structure will be used to deserealize json string response from /delete/{} API into golang structure
+type ModifyEmployee struct {
 	Status  string `json:"status"`
+	Data    string `json:"data"`
 	Message string `json:"message"`
 }
 
