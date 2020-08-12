@@ -8,7 +8,7 @@
 
 ## Code
 1. const.go file contains all constant strings and user defined errors.
-2. data.go file takes care of db related functions
+2. repo.go file takes care of api related functions
 3. cmds.go file takes care of execution of all CLI functions
 4. main.go is the entry point
 
