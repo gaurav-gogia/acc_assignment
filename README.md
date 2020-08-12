@@ -12,4 +12,4 @@
 3. cmds.go file takes care of execution of all CLI functions
 4. main.go is the entry point
 
-I didn't create any packages because that felt a little over-kill. As for database I'm using sqlite.
+I didn't create any packages because that felt a little over-kill.
